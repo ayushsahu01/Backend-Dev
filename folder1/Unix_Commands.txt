@@ -1,0 +1,174 @@
+1. File & Directory Management
+
+| Command | Description                          |
+| ------- | ------------------------------------ |
+| `ls`    | List files and directories           |
+| `pwd`   | Show present working directory       |
+| `cd`    | Change directory                     |
+| `mkdir` | Create a directory                   |
+| `rmdir` | Remove empty directory               |
+| `cp`    | Copy files/directories               |
+| `mv`    | Move or rename files                 |
+| `rm`    | Delete files or directories          |
+| `touch` | Create empty file / update timestamp |
+| `tree`  | Display directory structure          |
+| `stat`  | Show file details                    |
+| `file`  | Identify file type                   |
+
+
+2. File Viewing & Editing
+
+| Command      | Description              |
+| ------------ | ------------------------ |
+| `cat`        | Display file content     |
+| `tac`        | Display file in reverse  |
+| `less`       | View file page by page   |
+| `more`       | View file page-wise      |
+| `head`       | Show first lines of file |
+| `tail`       | Show last lines of file  |
+| `nano`       | Simple text editor       |
+| `vi` / `vim` | Advanced text editor     |
+
+
+3. File Permissions & Ownership
+
+| Command | Description             |
+| ------- | ----------------------- |
+| `chmod` | Change file permissions |
+| `chown` | Change file owner       |
+| `chgrp` | Change group ownership  |
+| `umask` | Set default permissions |
+
+
+4. Search & Text Processing
+
+| Command   | Description              |
+| --------- | ------------------------ |
+| `grep`    | Search text pattern      |
+| `egrep`   | Extended pattern search  |
+| `fgrep`   | Fixed string search      |
+| `find`    | Search files/directories |
+| `locate`  | Fast file search         |
+| `which`   | Locate command path      |
+| `whereis` | Locate binaries          |
+
+
+5. Text Manipulation
+
+| Command | Description                    |
+| ------- | ------------------------------ |
+| `sort`  | Sort lines                     |
+| `uniq`  | Remove duplicate lines         |
+| `wc`    | Count lines, words, characters |
+| `cut`   | Extract columns                |
+| `paste` | Merge files                    |
+| `tr`    | Translate characters           |
+| `sed`   | Stream editor                  |
+| `awk`   | Pattern scanning & processing  |
+| `nl`    | Number lines                   |
+
+
+6. Compression & Archiving
+
+| Command  | Description          |
+| -------- | -------------------- |
+| `tar`    | Archive files        |
+| `gzip`   | Compress files       |
+| `gunzip` | Decompress files     |
+| `zip`    | Zip files            |
+| `unzip`  | Extract zip          |
+| `bzip2`  | High compression     |
+| `xz`     | Advanced compression |
+
+
+7. Process Management
+
+| Command   | Description                  |
+| --------- | ---------------------------- |
+| `ps`      | Show running processes       |
+| `top`     | Live process monitoring      |
+| `htop`    | Enhanced top                 |
+| `kill`    | Terminate process            |
+| `killall` | Kill by name                 |
+| `bg`      | Resume process in background |
+| `fg`      | Resume process in foreground |
+| `jobs`    | Show background jobs         |
+| `nice`    | Set priority                 |
+| `renice`  | Change priority              |
+
+
+8. Disk & File System
+
+| Command  | Description        |
+| -------- | ------------------ |
+| `df`     | Disk free space    |
+| `du`     | Disk usage         |
+| `mount`  | Mount filesystem   |
+| `umount` | Unmount filesystem |
+| `lsblk`  | Block devices      |
+| `fsck`   | Check filesystem   |
+
+
+9. Networking Commands
+
+| Command    | Description           |
+| ---------- | --------------------- |
+| `ping`     | Check connectivity    |
+| `ifconfig` | Network configuration |
+| `ip`       | Network settings      |
+| `netstat`  | Network statistics    |
+| `ss`       | Socket statistics     |
+| `wget`     | Download from web     |
+| `curl`     | Data transfer         |
+| `ftp`      | File transfer         |
+| `scp`      | Secure file copy      |
+| `ssh`      | Secure login          |
+
+
+10. User & System Information
+
+| Command    | Description           |
+| ---------- | --------------------- |
+| `whoami`   | Current user          |
+| `who`      | Logged users          |
+| `id`       | User identity         |
+| `uname`    | System info           |
+| `hostname` | System name           |
+| `uptime`   | System running time   |
+| `date`     | Current date/time     |
+| `cal`      | Calendar              |
+| `env`      | Environment variables |
+| `history`  | Command history       |
+
+
+11. Package & System Control
+
+| Command     | Description      |
+| ----------- | ---------------- |
+| `shutdown`  | Power off system |
+| `reboot`    | Restart system   |
+| `systemctl` | Manage services  |
+| `service`   | Control services |
+| `crontab`   | Schedule jobs    |
+| `at`        | Run job later    |
+
+
+12. Input / Output & Pipes
+
+| Symbol | Meaning                 |             |
+| ------ | ----------------------- | ----------- |
+| `>`    | Output redirection      |             |
+| `>>`   | Append output           |             |
+| `<`    | Input redirection       |             |
+| `      | `                       | Pipe output |
+| `tee`  | Output to file + screen |             |
+
+
+13. Help & Documentation
+
+| Command  | Description         |
+| -------- | ------------------- |
+| `man`    | Manual pages        |
+| `info`   | GNU documentation   |
+| `help`   | Built-in help       |
+| `--help` | Command help option |
