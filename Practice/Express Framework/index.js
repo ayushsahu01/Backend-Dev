@@ -58,12 +58,70 @@ app.post("/students/register", (req, res)=>{
             if (err) return res.status(500).send("Error saving data");
 
             res.json({
-                message: "Student registered successfully ✅",
+                message: "Student registered successfully",
                 students
             });
         });
     });
-})
+});
+
+app.put("/students/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const updatedData = req.body;
+
+    if (!updatedData) {
+        return res.status(400).send("Please provide updated data");
+    }
+
+    fs.readFile("student.json", "utf8", (err, fileData) => {
+
+        if (err) {
+            return res.status(500).send("Error reading file");
+        }
+
+        let students = fileData ? JSON.parse(fileData) : [];
+
+        const index = students.findIndex(s => s.id == id);
+
+        if (index === -1) {
+            return res.status(404).send("Student not found");
+        }
+
+        // merge old + new data
+        students[index] = { ...students[index], ...updatedData };
+
+        fs.writeFile("student.json", JSON.stringify(students, null, 2), (err) => {
+            if (err) return res.status(500).send("Error updating data");
+
+            res.json({
+                message: "Student updated successfully",
+                student: students[index]
+            });
+        });
+    });
+});
+
+app.delete("/students/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+
+    fs.readFile("student.json", "utf8", (err, fileData) => {
+        let students = fileData ? JSON.parse(fileData) : [];
+
+        const filtered = students.filter(s => s.id != id);
+
+        if (filtered.length === students.length) {
+            return res.status(404).send("Student not found");
+        }
+
+        fs.writeFile("student.json", JSON.stringify(filtered, null, 2), (err) => {
+            if (err) return res.status(500).send("Error deleting");
+
+            res.json({ message: "Student deleted successfully" });
+        });
+    });
+});
+
+
 // app.get("/", (req, res) => {
 //     res.send("Welcome to Home Page");
 // })
