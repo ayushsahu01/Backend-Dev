@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fs = require("fs");
 app.use(express.json());
 const PORT = 7054;
 
@@ -35,8 +36,33 @@ app.get("/students/:id", (req, res)=>{
 
 app.post("/students/register", (req, res)=>{
     const Data = req.body;
-    students.push(Data);
-    res.json(students);
+
+    if (!Data) {
+        return res.status(400).send("Please provide student data");
+    }
+
+    // Read existing file
+    fs.readFile("student.json", "utf8", (err, fileData) => {
+
+        let students = [];
+
+        if (!err && fileData) {
+            students = JSON.parse(fileData);
+        }
+
+        // add new student
+        students.push(Data);
+
+        // Write back to file
+        fs.writeFile("student.json", JSON.stringify(students, null, 2), (err) => {
+            if (err) return res.status(500).send("Error saving data");
+
+            res.json({
+                message: "Student registered successfully ✅",
+                students
+            });
+        });
+    });
 })
 // app.get("/", (req, res) => {
 //     res.send("Welcome to Home Page");
