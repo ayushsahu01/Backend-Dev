@@ -125,12 +125,14 @@ const fs = require("fs").promises;
 const express = require("express");
 const app = express();
 
-app.use(express.json())
-
-
 const readStudentsFromFile = async () => {
-  const data = await fs.readFile("./students.json", "utf-8");
-  return JSON.parse(data || "[]");
+  try{
+    const data = await fs.readFile("./students.json", "utf-8");
+    return JSON.parse(data || "[]");
+  }
+  catch(e){
+    console.log(e.message)
+  }
 };
 
 const writeStudentsToFile = async (records) => {
