@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students</title>
+</head>
+<body>
+
+<h1>ADD New Students</h1>
+
+<form action="/students/register" method="POST">
+  <input type="text" name="name" placeholder="Enter Your Name">
+
+  <select name="branch">
+    <option value="CSE">CSE</option>
+    <option value="Mech">Mech</option>
+    <option value="Civil">Civil</option>
+  </select>
+
+  <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<h3>Current Students:</h3>
+
+<ul>
+<% allStudents.forEach(s => { %>
+  <li><%= s.name %> - <%= s.branch %></li>
+<% }) %>
+</ul>
+
+</body>
+</html>

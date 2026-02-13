@@ -1,36 +1,42 @@
 const express = require("express");
 const app = express();
 const fs = require("fs").promises;
+
 app.set("view engine", "ejs");
-app.use(express.urlencoded({extended: true}));
-let allStudents = [];
+app.use(express.urlencoded({ extended: true }));
 
-// const readStudentsFromFile = async () => {
-//     const data = await fs.readFile("./students.json", "utf-8");
-//     return JSON.parse(data || "[]");
-// };
+// READ students
+const readStudents = async () => {
+  try {
+    const data = await fs.readFile("students.json", "utf-8");
+    return JSON.parse(data || "[]");
+  } catch {
+    return [];
+  }
+};
 
-// const writeStudentsToFile = async (records) => {
-//     await fs.writeFile("./students.json", JSON.stringify(records, null, ))
-// }; 
-app.get("/", (req, res) => {
-
-    const allStudents = [
-        { name: "Ayush", branch: "CSE" },
-        { name: "Rohit", branch: "IT" },
-        { name: "Priya", branch: "ECE" }
-    ];
-
-    res.render("form", { allStudents });
+// WRITE students
+const writeStudents = async (students) => {
+  await fs.writeFile("students.json", JSON.stringify(students, null, 2));
+};
+// HOME → show all registered students
+app.get("/", async (req, res) => {
+    
+  const allStudents = await readStudents();
+  res.render("form", { allStudents });
 });
 
-app.post("/students/register",(req,res)=>{
+// SUBMIT → add new student
+app.post("/students/register", async (req, res) => {
   const { name, branch } = req.body;
-  allStudents.push({ name, branch });
-  res.redirect("/");
-});
 
+  const allStudents = await readStudents(); // get old students
+  allStudents.push({ name, branch });       // add new student
+
+  await writeStudents(allStudents);         // save updated list
+  res.redirect("/");                        // reload home
+});
 
 app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+  console.log("Server running on http://localhost:3000");
 });
