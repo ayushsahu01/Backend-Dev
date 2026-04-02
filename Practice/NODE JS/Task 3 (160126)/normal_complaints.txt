@@ -1,5 +1,0 @@
-TicketID: TKT-316789
-Name: undefined
-Issue: undefined
-Priority: undefined
-----------------------

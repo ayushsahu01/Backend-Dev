@@ -1,0 +1,21 @@
+use studentDB
+db.createCollection("students")
+
+db.students.insertOne({
+  name: "Ayush",
+  email: "ayush@gmail.com",
+  age: 21,
+  course: "BCA",
+  gpa: 8.5
+})
+
+db.students.find()
+
+db.students.findOne({ email: "ayush@gmail.com" })
+
+db.students.updateOne(
+  { email: "ayush@gmail.com" },
+  { $set: { gpa: 9.2 } }
+)
+
+db.students.deleteOne({ email: "ayush@gmail.com" })
