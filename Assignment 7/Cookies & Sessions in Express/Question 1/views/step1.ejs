@@ -1,0 +1,8 @@
+<h2>Step 1: Basic Info</h2>
+
+<form action="/step1" method="POST">
+    Name: <input type="text" name="name" value="<%= data.name || '' %>" required><br>
+    Age: <input type="number" name="age" value="<%= data.age || '' %>" required><br>
+
+    <button type="submit">Next</button>
+</form>

@@ -1,0 +1,23 @@
+<h2>Dashboard</h2>
+
+<p>You are logged in</p>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+    const warningTime = 60 * 1000;
+
+    setTimeout(() => {
+        const extend = confirm("⚠️ Your session is about to expire. Extend session?");
+
+        if (extend) {
+            fetch("/extend-session")
+                .then(() => {
+                    alert("Session extended!");
+                    location.reload();
+                });
+        } else {
+            window.location.href = "/logout";
+        }
+    }, sessionTime - warningTime);
+</script>
