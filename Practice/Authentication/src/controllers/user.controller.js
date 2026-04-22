@@ -125,3 +125,12 @@ export const resetPassword = async(req, res) => {
 
     res.status(200).json({message: "Password reset successful"});
 }
+
+export const googleSuccess = async(req, res) => {
+    const token = await jwt.sign(
+        { user: req.user },
+        process.env.JWT_SECRET,
+        { expiresIn: "1d" }
+    )
+    res.json({ token, user: req.user });
+}
